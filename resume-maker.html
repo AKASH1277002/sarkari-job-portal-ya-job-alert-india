@@ -1,0 +1,34 @@
+<!DOCTYPE html>
+<html lang="hi">
+<head>
+    <meta charset="UTF-8"><meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Resume Maker - Sarkari Jobs</title>
+    <style>
+        body { font-family: sans-serif; background: #f4f4f4; padding: 20px; }
+        .box { background: white; padding: 20px; max-width: 500px; margin: auto; border: 2px solid #003366; border-radius: 10px; }
+        input, textarea { width: 100%; margin: 10px 0; padding: 10px; box-sizing: border-box; }
+        .btn { background: #28a745; color: white; border: none; padding: 15px; width: 100%; cursor: pointer; font-weight: bold; }
+    </style>
+</head>
+<body>
+    <div class="box">
+        <h2 style="text-align:center">📄 Resume Maker</h2>
+        <input type="text" id="n" placeholder="Pura Naam">
+        <input type="text" id="p" placeholder="Mobile Number">
+        <textarea id="e" placeholder="Education Information"></textarea>
+        <textarea id="s" placeholder="Skills / Experience"></textarea>
+        <button class="btn" onclick="gen()">Download Resume</button>
+        <br><br><center><a href="index.html">Back to Home</a></center>
+    </div>
+    <script>
+        function gen() {
+            const content = `<html><body style="padding:40px; border:2px solid #000;"><h1>RESUME</h1><hr><p><b>Name:</b> ${document.getElementById('n').value}</p><p><b>Phone:</b> ${document.getElementById('p').value}</p><h3>Education:</h3><p>${document.getElementById('e').value}</p><h3>Skills:</h3><p>${document.getElementById('s').value}</p></body></html>`;
+            const blob = new Blob([content], {type: 'text/html'});
+            const link = document.createElement('a');
+            link.href = URL.createObjectURL(blob);
+            link.download = "Resume.html";
+            link.click();
+        }
+    </script>
+</body>
+</html>
